@@ -16,13 +16,13 @@ class User(db.Model):
 
 
 class UserSchema(Schema):
-    id = fields.Int()
-    username = fields.Str()
-    email = fields.Email()
-    password = fields.Str()
-    first_name = fields.Str()
-    last_name = fields.Str()
-    job = fields.Str()
-    company = fields.Str()
-    address = fields.Str()
-    birthdate = fields.DateTime()
+    id = fields.Int()  
+    username = fields.Str()  
+    email = fields.Email()  
+    password = fields.Str()  
+    first_name = fields.Str()  
+    last_name = fields.Str()  
+    job = fields.Str()  
+    company = fields.Str()  
+    address = fields.Str()  
+    birthdate = fields.DateTime()  

@@ -1,13 +1,14 @@
 from flask import Flask, redirect
-from jinja2 import PackageLoader, Environment
 from flask_restx import Api
 from project.config import Config
+from project.create_data import init_db
 from project.views.main.main import main_ns
 from project.views.auth.check import check_ns
 from project.views.auth.user import user_ns
 from project.views.auth.auth import auth_ns
 from project.setup_db import db
 from loguru import logger
+
 
 # функция создания основного объекта app
 def create_app(config_object):
@@ -44,6 +45,9 @@ def register_extensions(app):
 
 
 app = create_app(Config())
+
+with app.app_context():
+    init_db()
 
 
 @app.before_first_request
