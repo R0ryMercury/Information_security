@@ -1,7 +1,7 @@
 from project.dao.models.user import User
 
 
-class AuthDao:
+class UserDao:
     def __init__(self, session) -> None:
         self.session = session
 

@@ -1,10 +1,10 @@
 from flask import abort
-from project.dao.auth import AuthDao
+from project.dao.user import UserDao
 from project.helpers import check_password, encode_token
 
 
 class AuthService:
-    def __init__(self, dao: AuthDao) -> None:
+    def __init__(self, dao: UserDao) -> None:
         self.dao = dao
 
     def check_token(self, token):
