@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Регистрация</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <style>
@@ -13,21 +14,19 @@
       font-family: Roboto, Arial, sans-serif;
       font-size: 20px;
       color:#d9ff00;
-      }
-      form {
-      border: 0px solid rgba(0, 0, 0, 0);
-      }
-      input[type=text], input[type=password] {
+       }
+       input[type=text], input[type=password] {
       width: 100%;
-      padding: 16px 8px;
+      padding: 16px 10px;
       margin: 5px 0;
       color:white; 
       font-size: 15px;
       display: inline-block;
       border: 2px solid rgb(0, 255, 255);
       box-sizing: border-box;
-      border-radius: 5px;
+      border-radius: 10px;
       background: rgba(0, 0, 0, 0.6);
+
       }
       button {
       background-color: #000000;
@@ -43,56 +42,37 @@
       text-align:center;
       fone-size:18;
       }
-      button:hover {
-      opacity: 0.8;
-      }
-      .formcontainer {
-      text-align: left;
-      margin: 24px 50px 12px;
-      }
-      .container {
-      padding: 1px 0;
-      text-align:left;
-      }
-      span.psw {
-      float: right;
-      padding-top: 0;
-      padding-right: 15px;
-      }
-      /* Change styles for span on extra small screens */
-      @media screen and (max-width: 300px) {
-      span.psw {
-      display: block;
-      float: none;
-      }
+      
+      
     </style>
   </head>
+  
   <body>
     <form action="/action_page.php">
       <h1>Регистрация</h1>
       <div class="formcontainer">
       <hr/>
       <div class="container">
-        <label for="uname"><strong>Username</strong></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
+        <label for="username"><strong>Username</strong></label>
+        <input type="text" placeholder="Enter Username" name="username" required> <br>
         <label for="email"><strong>Email</strong></label> 
-        <input type="text" placeholder="Enter Email" name="email" required>
+        <input type="text" placeholder="Enter Email" name="email" required><br>
         <label for="password"><strong>Password</strong></label>
-        <input type="text" placeholder="Enter Password" name="password" required>
+        <input type="password" placeholder="Enter Password" name="password" required><br>
         <label for="first_name"><strong>First Name</strong></label>
-        <input type="text" placeholder="Enter First Name" name="first_name" required>
+        <input type="text" placeholder="Enter First Name" name="first_name" required><br>
         <label for="last_name"><strong>Last Name</strong></label>
-        <input type="text" placeholder="Enter Last Name" name="last_name" required>
+        <input type="text" placeholder="Enter Last Name" name="last_name" required><br>
         <label for="job"><strong>Job</strong></label>
-        <input type="text" placeholder="Enter Job" name="job" >
+        <input type="text" placeholder="Enter Job" name="job" ><br>
         <label for="company"><strong>Company</strong></label>
-        <input type="text" placeholder="Enter Company" name="company" >
+        <input type="text" placeholder="Enter Company" name="company" ><br>
         <label for="address"><strong>Address</strong></label>
-        <input type="text" placeholder="Enter Address" name="address" >
+        <input type="text" placeholder="Enter Address" name="address" ><br>
         <label for="birthdate"><strong>Birthdate</strong></label>
-        <input type="password" placeholder="Enter Password" name="birthdate" >
+        <input type="text" placeholder="Enter Birthdate" name="birthdate" >
       </div>
-      <button type="submit">Login</button>
+      <button type="submit">Register</button>
       </div>
     </form>
   </body>
