@@ -1,5 +1,5 @@
 from flask_restx import Namespace, Resource
-from flask import request, render_template, make_response
+from flask import request, render_template, make_response, abort
 
 user_ns = Namespace("user")
 
@@ -13,6 +13,9 @@ class UserView(Resource):
 @user_ns.route("/profile")
 class UserProfile(Resource):
     def get(self):
-        user_d = request.args.get("user_d")
-        headers = {"Content-Type": "text/html"}
-        return make_response(render_template("profile.html", user=user_d), 200, headers)
+        if user_d := request.args:
+            headers = {"Content-Type": "text/html"}
+            return make_response(
+                render_template("profile.html", user=user_d), 200, headers
+            )
+        abort(401)
