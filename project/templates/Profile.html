@@ -643,7 +643,7 @@
                 field="tn_text_1664112382350"
                 style="line-height: 42px"
               >
-                Здравствуйте, имя
+                Здравствуйте, {{ user.name }}
               </div>
             </div>
             <div
@@ -677,7 +677,7 @@
                 field="tn_text_1664112512475"
                 style="line-height: 31px"
               >
-                Username:
+                Username: {{ user.username }}
               </div>
             </div>
             <div
@@ -711,7 +711,7 @@
                 field="tn_text_1664112532896"
                 style="line-height: 31px"
               >
-                email:
+                email: {{ user.email }}
               </div>
             </div>
             <div
@@ -745,7 +745,7 @@
                 field="tn_text_1664112534852"
                 style="line-height: 31px"
               >
-                Имя:
+                Имя: {{ user.first_name }}
               </div>
             </div>
             <div
@@ -779,7 +779,7 @@
                 field="tn_text_1664112536543"
                 style="line-height: 31px"
               >
-                Фамилия:
+                Фамилия: {{ user.last_name }}
               </div>
             </div>
             <div
@@ -813,7 +813,7 @@
                 field="tn_text_1664112537900"
                 style="line-height: 31px"
               >
-                Работа:
+                Работа: {{ user.job }}
               </div>
             </div>
             <div
@@ -847,7 +847,7 @@
                 field="tn_text_1664112539451"
                 style="line-height: 31px"
               >
-                Компания:
+                Компания: {{ user.company }}
               </div>
             </div>
             <div
@@ -881,7 +881,7 @@
                 field="tn_text_1664112541638"
                 style="line-height: 31px"
               >
-                Адрес:
+                Адрес: {{ user.address }}
               </div>
             </div>
             <div
@@ -915,7 +915,7 @@
                 field="tn_text_1664112543765"
                 style="line-height: 31px"
               >
-                День рождения:
+                День рождения: {{ user.birthdate }}
               </div>
             </div>
             <div
@@ -936,9 +936,7 @@
               data-fields="top,left,width,height,container,axisx,axisy,caption,leftunits,topunits"
               style="top: 200.5px; left: 1376.5px; width: 165px; height: 47px"
             >
-              <a class="tn-atom" href="https://project4715141.tilda.ws/main"
-                >Выход</a
-              >
+              <a class="tn-atom" href="/main">Выход</a>
             </div>
             <div
               class="t396__elem tn-elem tn-elem__4944697811664113119755"
@@ -958,11 +956,7 @@
               data-fields="top,left,width,height,container,axisx,axisy,caption,leftunits,topunits"
               style="top: 640.5px; left: 1131.5px; width: 200px; height: 55px"
             >
-              <a
-                class="tn-atom"
-                href="https://project4715141.tilda.ws/user/get_token"
-                >Обновить токен</a
-              >
+              <a class="tn-atom" href="/user/get_token">Обновить токен</a>
             </div>
             <div
               class="t396__elem tn-elem tn-elem__4944697811664113136786"
@@ -982,11 +976,7 @@
               data-fields="top,left,width,height,container,axisx,axisy,caption,leftunits,topunits"
               style="top: 640.5px; left: 1341.5px; width: 200px; height: 55px"
             >
-              <a
-                class="tn-atom"
-                href="https://project4715141.tilda.ws/user/password"
-                >Сменить пароль</a
-              >
+              <a class="tn-atom" href="/user/password">Сменить пароль</a>
             </div>
             <div
               class="t396__elem tn-elem tn-elem__4944697811664115391193"
@@ -1006,10 +996,7 @@
               data-fields="top,left,width,height,container,axisx,axisy,caption,leftunits,topunits"
               style="top: 640.5px; left: 921.5px; width: 200px; height: 55px"
             >
-              <a
-                class="tn-atom"
-                href="https://project4715141.tilda.ws/cipher"
-                target="_blank"
+              <a class="tn-atom" href="/cipher" target="_blank"
                 >Шифратор текста</a
               >
             </div>

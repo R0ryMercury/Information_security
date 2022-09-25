@@ -17,7 +17,7 @@ class CheckViewLogin(Resource):
         ):
 
             user_d = auth_service.check_user(username, password)
-            return redirect(url_for("user/profile"), user_d=user_d)
+            return redirect(url_for("user/profile", user_d=user_d))
 
 
 @check_ns.route("/register")
