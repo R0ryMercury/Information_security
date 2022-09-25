@@ -1,5 +1,5 @@
 Faker == 14.2.1
-Flask == 2.2.2
+Flask == 2.0.2
 Flask_SQLAlchemy == 2.5.1
 Jinja2 == 3.1.2
 MarkupSafe == 2.1.1
@@ -7,7 +7,7 @@ PyJWT == 2.5.0
 Pygments == 2.13.0
 Pyro4 == 4.82
 SQLAlchemy == 1.4.41
-Werkzeug == 2.2.2
+Werkzeug == 2.0.2
 aniso8601 == 9.0.1
 asttokens == 2.0.8
 attrs == 22.1.0
