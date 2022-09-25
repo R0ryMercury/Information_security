@@ -17,4 +17,4 @@ class BaseConfig(object):
 
 
 class Config(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(BASEDIR, "movies.db")
+    SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(BASEDIR, "users.db")
