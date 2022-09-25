@@ -10,8 +10,7 @@ class AuthDao:
         self.session.add(ent)
         self.session.commit()
 
-    def get_user(self, user_d):
-        username = user_d.get("username")
+    def get_user(self, username):
         return self.session.query(User).filter(User.username == username).first()
 
     def update(self, user):

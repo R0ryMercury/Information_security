@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, redirect
+from jinja2 import PackageLoader, Environment
 from flask_restx import Api
 from project.config import Config
 from project.views.main.main import main_ns
@@ -20,13 +21,15 @@ def create_app(config_object):
     app = Flask(
         __name__, template_folder="project/templates", static_folder="project/static"
     )
+    app.static_folder = app.root_path + "/project/static"
     app.config.from_object(config_object)
 
     @app.route("/")
     def index():
-        return render_template("index.html")
+        return redirect("/main/")
 
     register_extensions(app)
+
     return app
 
 
