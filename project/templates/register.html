@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Simple login form</title>
+    <title>Регистрация</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <style>
+      BODY {
+    background: url(https://abrakadabra.fun/uploads/posts/2022-02/1644072218_4-abrakadabra-fun-p-fon-v-stile-kiberpank-4.jpg) repeat-x; /* Параметры фона */
+   }
       html, body {
       display: flex;
       justify-content: center;
       font-family: Roboto, Arial, sans-serif;
-      font-size: 15px;
+      font-size: 20px;
+      color:#d9ff00;
       }
       form {
-      border: 5px solid #f1f1f1;
+      border: 0px solid rgba(0, 0, 0, 0);
       }
       input[type=text], input[type=password] {
       width: 100%;
       padding: 16px 8px;
-      margin: 8px 0;
+      margin: 5px 0;
+      color:white; 
+      font-size: 15px;
       display: inline-block;
-      border: 1px solid #ccc;
+      border: 2px solid rgb(0, 255, 255);
       box-sizing: border-box;
+      border-radius: 5px;
+      background: rgba(0, 0, 0, 0.6);
       }
       button {
-      background-color: #8ebf42;
-      color: white;
+      background-color: #000000;
+      color: rgb(251, 255, 0);
       padding: 14px 0;
       margin: 10px 0;
       border: none;
       cursor: grabbing;
       width: 100%;
+      border-radius: 50px;
       }
       h1 {
       text-align:center;
@@ -42,7 +51,7 @@
       margin: 24px 50px 12px;
       }
       .container {
-      padding: 16px 0;
+      padding: 1px 0;
       text-align:left;
       }
       span.psw {
@@ -60,21 +69,30 @@
   </head>
   <body>
     <form action="/action_page.php">
-      <h1>Login Form</h1>
+      <h1>Регистрация</h1>
       <div class="formcontainer">
       <hr/>
       <div class="container">
         <label for="uname"><strong>Username</strong></label>
         <input type="text" placeholder="Enter Username" name="uname" required>
-        <label for="psw"><strong>Password</strong></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <label for="email"><strong>Email</strong></label> 
+        <input type="text" placeholder="Enter Email" name="email" required>
+        <label for="password"><strong>Password</strong></label>
+        <input type="text" placeholder="Enter Password" name="password" required>
+        <label for="first_name"><strong>First Name</strong></label>
+        <input type="text" placeholder="Enter First Name" name="first_name" required>
+        <label for="last_name"><strong>Last Name</strong></label>
+        <input type="text" placeholder="Enter Last Name" name="last_name" required>
+        <label for="job"><strong>Job</strong></label>
+        <input type="text" placeholder="Enter Job" name="job" >
+        <label for="company"><strong>Company</strong></label>
+        <input type="text" placeholder="Enter Company" name="company" >
+        <label for="address"><strong>Address</strong></label>
+        <input type="text" placeholder="Enter Address" name="address" >
+        <label for="birthdate"><strong>Birthdate</strong></label>
+        <input type="password" placeholder="Enter Password" name="birthdate" >
       </div>
       <button type="submit">Login</button>
-      <div class="container" style="background-color: #eee">
-        <label style="padding-left: 15px">
-        <input type="checkbox"  checked="checked" name="remember"> Remember me
-        </label>
-        <span class="psw"><a href="#"> Forgot password?</a></span>
       </div>
     </form>
   </body>
