@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for
+from flask import request, redirect, url_for, abort
 from flask_restx import Namespace, Resource
 from project.container import auth_service
 
@@ -8,20 +8,23 @@ check_ns = Namespace("check")
 @check_ns.route("/login")
 class CheckViewLogin(Resource):
     def get(self):
-        req_form = request.form.to_dict(flat=False)
-        if token := req_form.get("token"):
+        req_data = request.args.to_dict(flat=False)
+        if token := req_data.get("token"):
             user_d = auth_service.check_token(token)
             return redirect(url_for("user/profile"), user_d=user_d)
-        if (username := req_form.get("username")) and (
-            password := req_form.get("password")
+        if (username := req_data.get("username")) and (
+            password := req_data.get("password")
         ):
 
             user_d = auth_service.check_user(username, password)
             return redirect(url_for("user/profile", user_d=user_d))
-        return "работает"
+        abort(404)
 
 
 @check_ns.route("/register")
 class CheckViewRegister(Resource):
     def get(self):
-        pass
+        req_form = request.args.to_dict(flat=False)
+        if req_form:
+            return redirect(url_for("user/profile", user_d=req_form))
+        abort(404)

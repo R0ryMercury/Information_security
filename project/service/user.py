@@ -7,3 +7,6 @@ class UserService:
 
     def get_user(self, username):
         return self.dao.get_user(username)
+
+    def create(self, user_d):
+        self.dao.create(user_d)
