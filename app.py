@@ -3,7 +3,6 @@ from flask_restx import Api
 from project.config import Config
 from project.create_data import init_db
 from project.views.main.main import main_ns
-from project.views.auth.check import check_ns
 from project.views.auth.user import user_ns
 from project.views.auth.auth import auth_ns
 from project.setup_db import db
@@ -39,7 +38,6 @@ def register_extensions(app):
     db.init_app(app)
     api = Api(app, title="Flask Api", doc="/docs")
     api.add_namespace(main_ns)
-    api.add_namespace(check_ns)
     api.add_namespace(auth_ns)
     api.add_namespace(user_ns)
 
@@ -47,12 +45,8 @@ def register_extensions(app):
 app = create_app(Config())
 
 with app.app_context():
-    init_db()
-
-
-@app.before_first_request
-def create_tables():
     db.create_all()
+    init_db()
 
 
 if __name__ == "__main__":

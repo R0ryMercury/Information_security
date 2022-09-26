@@ -99,7 +99,13 @@
           <label for="address"><strong>Address</strong></label>
           <input type="text" placeholder="Enter Address" name="address" /><br />
           <label for="birthdate"><strong>Birthdate</strong></label>
-          <input type="text" placeholder="Enter Birthdate" name="birthdate" />
+          <input
+            data-format="00.00.0000"
+            type="text"
+            placeholder="DD.MM.YYYY"
+            name="birthdate"
+            required0
+          />
         </div>
         <button type="submit">Register</button>
       </div>
