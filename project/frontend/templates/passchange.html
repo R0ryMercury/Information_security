@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Авторизация</title>
+    <title>Смена пароля</title>
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <style> 
@@ -49,15 +49,17 @@
     </style>
   </head>
   <body>
-    <form action="/action_page.php">
-      <h1>Авторизация</h1>
+    <form action="/action_page.php" method="POST" id="form">
+      <h1>Смена пароля</h1>
       <div class="formcontainer">
       <hr/>
       <div class="container">
-        <label for="password"><strong>Введите пароль</strong></label>
+        <label for="password"><strong>Введите Старый пароль</strong></label>
         <input type="password" placeholder="Enter Password" name="password" required>
-        <label for="password"><strong>Повторите новый пароль</strong></label> 
+        <label for="password"><strong>Введите новый пароль</strong></label> 
         <input type="password" placeholder="Enter New Password" name="new_password" required>
+        <label for="password"><strong>Повторите новый пароль</strong></label> 
+        <input type="password" placeholder="Enter New Password Again" name="new_password" required>
     </div>
     <button type="submit">Сменить пароль</button>
     </div>
