@@ -1,5 +1,5 @@
-from project.dao.user import UserDao
-from project.helpers import get_hashed_password
+from project.backend.dao.user import UserDao
+from project.backend.helpers import get_hashed_password
 
 
 class UserService:
@@ -10,5 +10,5 @@ class UserService:
         return self.dao.get_user(username)
 
     def create(self, user_d):
-        user_d["password"] = get_hashed_password(user_d.get("password"))
+        user_d["password"] = get_hashed_password(user_d.get("password").encode())
         self.dao.create(user_d)

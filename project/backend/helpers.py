@@ -3,7 +3,7 @@ import datetime
 import bcrypt
 import jwt
 from flask import request, abort
-from project.constants import (
+from project.backend.constants import (
     JWT_ALGORITHM,
     JWT_SECRET,
     TOKEN_EXPIRE_DAYS,

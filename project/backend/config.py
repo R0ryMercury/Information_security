@@ -12,9 +12,9 @@ class BaseConfig(object):
     RESTX_JSON = {
         "ensure_ascii": False,
     }
-
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
 class Config(BaseConfig):
+    STRICT_SLASHES = False
     SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(BASEDIR, "users.db")

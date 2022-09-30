@@ -7,6 +7,7 @@
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
       rel="stylesheet"
     />
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
     <style>
       BODY {
         background: url(https://abrakadabra.fun/uploads/posts/2022-02/1644072218_4-abrakadabra-fun-p-fon-v-stile-kiberpank-4.jpg)
@@ -51,7 +52,7 @@
   </head>
 
   <body>
-    <form action="/user/profile">
+    <form action="/user/profile" method="POST" id="form">
       <h1>Регистрация</h1>
       <div class="formcontainer">
         <hr />
@@ -61,6 +62,7 @@
             type="text"
             placeholder="Enter Username"
             name="username"
+            form="form"
             required
           />
           <br />
@@ -69,6 +71,7 @@
             type="text"
             placeholder="Enter Email"
             name="email"
+            form="form"
             required
           /><br />
           <label for="password"><strong>Password</strong></label>
@@ -76,6 +79,7 @@
             type="password"
             placeholder="Enter Password"
             name="password"
+            form="form"
             required
           /><br />
           <label for="first_name"><strong>First Name</strong></label>
@@ -83,6 +87,7 @@
             type="text"
             placeholder="Enter First Name"
             name="first_name"
+            form="form"
             required
           /><br />
           <label for="last_name"><strong>Last Name</strong></label>
@@ -90,6 +95,7 @@
             type="text"
             placeholder="Enter Last Name"
             name="last_name"
+            form="form"
             required
           /><br />
           <label for="job"><strong>Job</strong></label>
@@ -104,7 +110,7 @@
             type="text"
             placeholder="DD.MM.YYYY"
             name="birthdate"
-            required0
+            required
           />
         </div>
         <button type="submit">Register</button>

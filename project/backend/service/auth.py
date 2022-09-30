@@ -1,6 +1,6 @@
 from flask import abort
-from project.dao.user import UserDao
-from project.helpers import check_password, encode_token
+from project.backend.dao.user import UserDao
+from project.backend.helpers import check_password, encode_token
 
 
 class AuthService:

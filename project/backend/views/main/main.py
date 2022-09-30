@@ -1,7 +1,7 @@
 from flask import render_template, make_response
 from flask_restx import Namespace, Resource
-from project.dao.models.user import User, UserSchema
-from project.helpers import auth_required
+from project.backend.dao.models.user import User, UserSchema
+from project.backend.helpers import auth_required
 
 main_ns = Namespace("main")
 

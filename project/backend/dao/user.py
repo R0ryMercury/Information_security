@@ -1,4 +1,4 @@
-from project.dao.models.user import User
+from project.backend.dao.models.user import User
 from datetime import datetime
 
 
@@ -10,7 +10,7 @@ class UserDao:
         ent = User(
             username=user_d.get("username"),
             email=user_d.get("email"),
-            password= user_d.get("password"),
+            password=user_d.get("password"),
             first_name=user_d.get("first_name"),
             last_name=user_d.get("last_name"),
             job=user_d.get("job"),

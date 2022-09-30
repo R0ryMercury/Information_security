@@ -1,14 +1,14 @@
 from flask_restx import Namespace, Resource
 from flask import request, render_template, make_response, abort, jsonify
-from project.container import user_service
-from project.helpers import generate_tokens
+from project.backend.container import user_service
+from project.backend.helpers import generate_tokens
 
 user_ns = Namespace("user")
 
 
 @user_ns.route("/get_token/<username>")
 class UserView(Resource):
-    def get(self, username):
+    def post(self, username):
         user_d = user_service.get_user(username)
         return jsonify(
             generate_tokens(
@@ -23,8 +23,8 @@ class UserView(Resource):
 
 @user_ns.route("/profile")
 class UserProfile(Resource):
-    def get(self):
-        if req_data := request.args:
+    def post(self):
+        if req_data := request.form.to_dict():
             # tokens = generate_tokens(req_data)
             headers = {
                 "Content-Type": "text/html",  # "Authorization": f"Bearer {tokens.get('access_token')}
@@ -39,3 +39,6 @@ class UserProfile(Resource):
                     render_template("profile.html", user=user_d), 200, headers
                 )
         abort(401)
+
+
+# @user_ns.route("/password")
