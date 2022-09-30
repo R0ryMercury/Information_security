@@ -11,6 +11,7 @@ class UserService:
 
     def create(self, user_d):
         user_d["password"] = get_hashed_password(user_d.get("password").encode())
+        user_d["role"] = "user"
         self.dao.create(user_d)
 
     def create_tokens(self, user_d):
@@ -19,6 +20,6 @@ class UserService:
                 "username": user_d.username,
                 "email": user_d.email,
                 "password": user_d.password,
-                "role": user_d.role
+                "role": user_d.role,
             }
         )
