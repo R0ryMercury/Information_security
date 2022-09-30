@@ -1,66 +1,82 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Авторизация</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <style> 
-    BODY {
-        background: url(https://damion.club/uploads/posts/2022-01/1641878611_1-damion-club-p-kiberpank-fon-1.jpg) repeat-x; /* Параметры фона */
-       }
-       html, body {
-      display: flex;
-      justify-content: center;
-      font-family: Roboto, Arial, sans-serif;
-      font-size: 20px;
-      color:#d9ff00;
-       }
-       
-       form {
-      border: 0px solid rgba(0, 0, 0, 0);
-       }
-       input[type=text], input[type=password] {
-      width: 100%;
-      padding: 16px 8px;
-      margin: 5px 0;
-      color:white; 
-      font-size: 15px;
-      display: inline-block;
-      border: 2px solid rgb(0, 255, 255);
-      box-sizing: border-box;
-      border-radius: 5px;
-      background: rgba(0, 0, 0, 0.6);
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
+      rel="stylesheet"
+    />
+    <style>
+      BODY {
+        background: url(https://damion.club/uploads/posts/2022-01/1641878611_1-damion-club-p-kiberpank-fon-1.jpg)
+          repeat-x; /* Параметры фона */
       }
-      button {
-      background-color: #000000;
-      color: rgb(102, 255, 0);
-      padding: 14px 0;
-      margin: 20px 0;
-      font-size: 20px;
-      border: none;
-      cursor: grabbing;
-      width: 100%;
-      border-radius: 50px;  }
-      h1 {
-      text-align:center;
-      fone-size:18;
+      html,
+      body {
+        display: flex;
+        justify-content: center;
+        font-family: Roboto, Arial, sans-serif;
+        font-size: 20px;
+        color: #d9ff00;
       }
 
+      form {
+        border: 0px solid rgba(0, 0, 0, 0);
+      }
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 16px 8px;
+        margin: 5px 0;
+        color: white;
+        font-size: 15px;
+        display: inline-block;
+        border: 2px solid rgb(0, 255, 255);
+        box-sizing: border-box;
+        border-radius: 5px;
+        background: rgba(0, 0, 0, 0.6);
+      }
+      button {
+        background-color: #000000;
+        color: rgb(102, 255, 0);
+        padding: 14px 0;
+        margin: 20px 0;
+        font-size: 20px;
+        border: none;
+        cursor: grabbing;
+        width: 100%;
+        border-radius: 50px;
+      }
+      h1 {
+        text-align: center;
+        font-size: 18;
+      }
     </style>
   </head>
   <body>
-    <form action="/action_page.php">
+    <form action="/user/profile">
       <h1>Авторизация</h1>
       <div class="formcontainer">
-      <hr/>
-      <div class="container">
-        <label for="username"><strong>Username</strong></label>
-        <input type="text" placeholder="Enter Username" name="username" required>
-        <label for="password"><strong>Password</strong></label> 
-        <input type="password" placeholder="Enter Password" name="password" required>
-    </div>
-    <button type="submit">Login</button>
-    </div>
-  </form>
-</body>
+        <hr />
+        <div class="container">
+          <label for="username"><strong>Username</strong></label>
+          <input
+            type="text"
+            placeholder="Enter Username"
+            name="username"
+            required
+          />
+          <label for="password"><strong>Password</strong></label>
+          <input
+            type="password"
+            placeholder="Enter Password"
+            name="password"
+            required
+          />
+        </div>
+        <button type="submit">Login</button>
+      </div>
+    </form>
+  </body>
 </html>
