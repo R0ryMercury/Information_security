@@ -1,6 +1,6 @@
 from flask import abort
 from project.backend.dao.user import UserDao
-from project.backend.helpers import check_password, encode_token
+from project.backend.helpers import encode_token, generate_tokens
 
 
 class AuthService:
@@ -12,19 +12,12 @@ class AuthService:
             return data.get("name")
         abort(401)
 
-    def check_user(self, username, password):
-        user = self.dao.get_user(username)
-        if check_password(password, user.password):
-            return {
-                "id": user.id,
-                "username": user.username,
-                "email": user.email,
-                "password": user.password,
-                "first_name": user.first_name,
-                "last_name": user.last_name,
-                "job": user.job,
-                "company": user.company,
-                "address": user.address,
-                "birthdate": user.birthdate,
+    def create_tokens(self, user_d):
+        return generate_tokens(
+            {
+                "username": user_d.username,
+                "email": user_d.email,
+                "password": user_d.password,
+                "role": user_d.role,
             }
-        abort(401)
+        )

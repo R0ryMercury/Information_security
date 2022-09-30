@@ -1,9 +1,19 @@
-from flask import render_template, make_response, request, abort, redirect, Response
+from flask import (
+    render_template,
+    make_response,
+    request,
+    url_for,
+    redirect,
+    Response,
+    session,
+)
 from flask_restx import Namespace, Resource
 from project.backend.container import user_service
+from project.backend.dao.models.user import UserSchema
 from project.backend.helpers import generate_tokens
 
 auth_ns = Namespace("auth")
+user_schema = UserSchema()
 
 
 @auth_ns.route("/register/")
@@ -16,7 +26,7 @@ class RegisterView(Resource):
         if req_data := request.form.to_dict():
             try:
                 user_service.create(req_data)
-                return redirect("/auth/login", code=302)
+                return redirect("/auth/login")
             except:
                 return Response(
                     response="Одно из полей указано неверно <a href='/auth/register/'>попробовать еще раз</a>",
@@ -33,14 +43,10 @@ class LoginView(Resource):
 
     def post(self):
         if req_data := request.form.to_dict():
-            tokens = generate_tokens(req_data)
-
-            if req_data := request.form.to_dict():
-                if user_d := user_service.get_user(req_data.get("username")):
-                    headers = {
-                        "Content-Type": "text/html",
-                        "Authorization": f"Bearer {tokens.get('access_token')}",
-                    }
-                    return make_response(
-                        render_template("profile.html", user=user_d), 200, headers
-                    )
+            if user_d := user_service.get_user(req_data.get("username")):
+                user_json = user_schema.dumps(user_d)
+                user_dict = user_schema.loads(user_json)
+                tokens = generate_tokens(user_dict)
+                session["token"] = tokens.get("access_token")
+                return redirect(url_for("user_user_profile"))
+        return "Что-то пошло не так"
