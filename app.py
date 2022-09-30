@@ -1,11 +1,11 @@
 from flask import Flask, redirect
 from flask_restx import Api
-from project.config import Config
-from project.create_data import init_db
-from project.views.main.main import main_ns
-from project.views.auth.user import user_ns
-from project.views.auth.auth import auth_ns
-from project.setup_db import db
+from project.backend.config import Config
+from project.backend.create_data import init_db
+from project.backend.views.main.main import main_ns
+from project.backend.views.auth.user import user_ns
+from project.backend.views.auth.auth import auth_ns
+from project.backend.setup_db import db
 from loguru import logger
 
 
@@ -19,9 +19,10 @@ def create_app(config_object):
         compression="zip",
     )
     app = Flask(
-        __name__, template_folder="project/templates", static_folder="project/static"
+        __name__,
+        template_folder="project/frontend/templates",
+        static_folder="project/frontend/static",
     )
-    app.static_folder = app.root_path + "/project/static"
     app.config.from_object(config_object)
 
     @app.route("/")
