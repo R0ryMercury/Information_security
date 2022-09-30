@@ -13,6 +13,7 @@ class User(db.Model):
     company = db.Column(db.String(100))
     address = db.Column(db.String(100))
     birthdate = db.Column(db.Date())
+    role = db.Columb(db.String(10))
 
 
 class UserSchema(Schema):
@@ -26,3 +27,4 @@ class UserSchema(Schema):
     company = fields.Str()
     address = fields.Str()
     birthdate = fields.DateTime()
+    role = fields.Str()

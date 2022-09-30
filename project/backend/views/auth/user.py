@@ -6,21 +6,6 @@ from project.backend.helpers import generate_tokens
 user_ns = Namespace("user")
 
 
-@user_ns.route("/get_token/<username>")
-class UserView(Resource):
-    def post(self, username):
-        user_d = user_service.get_user(username)
-        return jsonify(
-            generate_tokens(
-                {
-                    "username": user_d.username,
-                    "email": user_d.email,
-                    "password": user_d.password,
-                }
-            )
-        )
-
-
 @user_ns.route("/profile")
 class UserProfile(Resource):
     def post(self):

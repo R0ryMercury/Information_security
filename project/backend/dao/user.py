@@ -17,6 +17,7 @@ class UserDao:
             company=user_d.get("company"),
             address=user_d.get("address"),
             birthdate=datetime.strptime(user_d.get("birthdate"), "%d.%m.%Y"),
+            role=user_d.get("role"),
         )
         self.session.add(ent)
         self.session.commit()
