@@ -1,8 +1,19 @@
-from flask import render_template, make_response, request, abort, redirect
+from flask import (
+    render_template,
+    make_response,
+    request,
+    url_for,
+    redirect,
+    Response,
+    session,
+)
 from flask_restx import Namespace, Resource
 from project.backend.container import user_service
+from project.backend.dao.models.user import UserSchema
+from project.backend.helpers import generate_tokens
 
 auth_ns = Namespace("auth")
+user_schema = UserSchema()
 
 
 @auth_ns.route("/register/")
@@ -13,15 +24,15 @@ class RegisterView(Resource):
 
     def post(self):
         if req_data := request.form.to_dict():
-            headers = {
-                "Content-Type": "text/html",  # "Authorization": f"Bearer {tokens.get('access_token')}
-            }
-            if "email" in req_data:
+            try:
                 user_service.create(req_data)
-                return redirect(
-                    render_template("profile.html", user=req_data), 200, headers
+                return redirect("/auth/login")
+            except:
+                return Response(
+                    response="Одно из полей указано неверно <a href='/auth/register/'>попробовать еще раз</a>",
+                    status=400,
                 )
-        abort(401)
+        return "что-то пошло не так, го дебажить"
 
 
 @auth_ns.route("/login/")
@@ -32,15 +43,10 @@ class LoginView(Resource):
 
     def post(self):
         if req_data := request.form.to_dict():
-            # tokens = generate_tokens(req_data)
-
-            if req_data := request.form.to_dict():
-                if user_d := user_service.get_user(req_data.get("username")):
-                    headers = {
-                        "Content-Type": "text/html",  # "Authorization": f"Bearer {tokens.get('access_token')}
-                    }
-                    return make_response(
-                        render_template("profile.html", user=user_d), 200, headers
-                    )
-
-        abort(401)
+            if user_d := user_service.get_user(req_data.get("username")):
+                user_json = user_schema.dumps(user_d)
+                user_dict = user_schema.loads(user_json)
+                tokens = generate_tokens(user_dict)
+                session["token"] = tokens.get("access_token")
+                return redirect(url_for("user_user_profile"))
+        return "Что-то пошло не так"
