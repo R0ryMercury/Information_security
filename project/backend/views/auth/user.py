@@ -1,5 +1,12 @@
 from flask_restx import Resource, Namespace
-from flask import request, render_template, session, Response, make_response
+from flask import (
+    request,
+    render_template,
+    session,
+    make_response,
+    render_template_string,
+    Response,
+)
 from project.backend.helpers import auth_required, encode_token
 from project.backend.container import user_service
 
@@ -29,7 +36,7 @@ class UserPassword(Resource):
         if user_service.update_password(passwords):
             return Response(
                 response="Пароль успешно изменен <a href='/user/profile/'>вернуться в профиль</a>",
-                status=204,
+                status=200,
             )
         return Response(
             response="Одно из полей указано неверно <a href='/user/password/'>попробовать еще раз</a>",

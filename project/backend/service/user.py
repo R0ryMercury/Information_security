@@ -9,6 +9,9 @@ class UserService:
     def __init__(self, dao: UserDao) -> None:
         self.dao = dao
 
+    def get_all(self) -> list[User]:
+        return self.dao.get_all()
+
     def get_user(self, username: str) -> User:
         return self.dao.get_user(username)
 
@@ -30,3 +33,6 @@ class UserService:
                 self.dao.update(user)
                 return True
         return False
+
+    def delete(self, username: str) -> None:
+        self.dao.delete(username)
