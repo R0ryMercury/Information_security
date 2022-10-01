@@ -11,5 +11,5 @@ class UserService:
 
     def create(self, user_d):
         user_d["password"] = get_hashed_password(user_d.get("password").encode())
-        user_d["role"] = "user"
+        user_d["role"] = "admin"
         self.dao.create(user_d)

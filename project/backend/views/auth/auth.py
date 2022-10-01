@@ -1,3 +1,4 @@
+import json
 from flask import (
     render_template,
     make_response,
@@ -44,8 +45,8 @@ class LoginView(Resource):
     def post(self):
         if req_data := request.form.to_dict():
             if user_d := user_service.get_user(req_data.get("username")):
-                user_json = user_schema.dumps(user_d)
-                user_dict = user_schema.loads(user_json)
+                user_string = user_schema.dumps(user_d)
+                user_dict = json.loads(user_string)
                 tokens = generate_tokens(user_dict)
                 session["token"] = tokens.get("access_token")
                 return redirect(url_for("user_user_profile"))
