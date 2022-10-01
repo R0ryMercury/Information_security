@@ -27,7 +27,7 @@ class RegisterView(Resource):
         if req_data := request.form.to_dict():
             try:
                 user_service.create(req_data)
-                return redirect("/auth/login")
+                return redirect("/auth/login/")
             except:
                 return Response(
                     response="Одно из полей указано неверно <a href='/auth/register/'>попробовать еще раз</a>",

@@ -12,14 +12,14 @@ from project.backend.constants import (
 
 
 def get_hashed_password(password):
-    return bcrypt.hashpw(password, bcrypt.gensalt())
+    return bcrypt.hashpw(password.encode(), bcrypt.gensalt())
 
 
-def check_password(password, hashed_password):
-    return bcrypt.checkpw(password, hashed_password)
+def check_password(password: str, hashed_password: str) -> bool:
+    return bcrypt.checkpw(password.encode(), hashed_password)
 
 
-def generate_tokens(data):
+def generate_tokens(data: dict) -> dict:
     minutes = datetime.datetime.utcnow() + datetime.timedelta(
         minutes=TOKEN_EXPIRE_MINUTES
     )
@@ -36,7 +36,7 @@ def generate_tokens(data):
     }
 
 
-def encode_token(token):
+def encode_token(token: str) -> dict:
     try:
         data = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
     except Exception:
