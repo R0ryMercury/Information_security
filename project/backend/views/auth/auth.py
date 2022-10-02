@@ -1,3 +1,4 @@
+import json
 from flask import (
     render_template,
     make_response,
@@ -10,7 +11,7 @@ from flask import (
 from flask_restx import Namespace, Resource
 from project.backend.container import user_service
 from project.backend.dao.models.user import UserSchema
-from project.backend.helpers import generate_tokens
+from project.backend.helpers import check_password, generate_tokens
 
 auth_ns = Namespace("auth")
 user_schema = UserSchema()
@@ -26,7 +27,7 @@ class RegisterView(Resource):
         if req_data := request.form.to_dict():
             try:
                 user_service.create(req_data)
-                return redirect("/auth/login")
+                return redirect("/auth/login/")
             except:
                 return Response(
                     response="Одно из полей указано неверно <a href='/auth/register/'>попробовать еще раз</a>",
@@ -44,9 +45,20 @@ class LoginView(Resource):
     def post(self):
         if req_data := request.form.to_dict():
             if user_d := user_service.get_user(req_data.get("username")):
-                user_json = user_schema.dumps(user_d)
-                user_dict = user_schema.loads(user_json)
+                if not check_password(req_data.get("password"), user_d.password):
+                    return Response(
+                        response="Неправильный пароль. <a href='/auth/login/'>Попробовать еще раз</a>",
+                        status=400,
+                    )
+
+                user_string = user_schema.dumps(user_d)
+                user_dict = json.loads(user_string)
+
                 tokens = generate_tokens(user_dict)
                 session["token"] = tokens.get("access_token")
                 return redirect(url_for("user_user_profile"))
-        return "Что-то пошло не так"
+
+        return Response(
+            response="Неправильный логин. <a href='/auth/login/'>Попробовать еще раз</a>",
+            status=400,
+        )

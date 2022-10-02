@@ -14,13 +14,14 @@ def init_db():
                 User(
                     username=fake.unique.user_name(),
                     email=fake.unique.email(),
-                    password=get_hashed_password(fake.password().encode()),
+                    password=get_hashed_password(fake.password()),
                     first_name=fake.first_name_male(),
                     last_name=fake.last_name_male(),
                     job=fake.job(),
                     company=fake.company(),
                     address=fake.address(),
                     birthdate=fake.date_of_birth(),
+                    role="user",
                 )
             )
         else:
@@ -28,12 +29,13 @@ def init_db():
                 User(
                     username=fake.unique.user_name(),
                     email=fake.unique.email(),
-                    password=get_hashed_password(fake.password().encode()),
+                    password=get_hashed_password(fake.password()),
                     first_name=fake.first_name_female(),
                     last_name=fake.last_name_female(),
                     job=fake.job(),
                     company=fake.company(),
                     address=fake.address(),
                     birthdate=fake.date_between(),
+                    role="user",
                 )
             )
