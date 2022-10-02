@@ -17,7 +17,7 @@ class UserService:
 
     def create(self, user_d: dict) -> None:
         user_d["password"] = get_hashed_password(user_d.get("password"))
-        user_d["role"] = "admin"
+        user_d["role"] = "user"
         self.dao.create(user_d)
 
     def update_password(self, passwords: dict) -> bool:
