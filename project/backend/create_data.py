@@ -21,6 +21,7 @@ def init_db():
                     company=fake.company(),
                     address=fake.address(),
                     birthdate=fake.date_of_birth(),
+                    role="user",
                 )
             )
         else:
@@ -35,5 +36,6 @@ def init_db():
                     company=fake.company(),
                     address=fake.address(),
                     birthdate=fake.date_between(),
+                    role="user",
                 )
             )

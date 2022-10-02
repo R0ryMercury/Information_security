@@ -4,10 +4,9 @@ from flask import (
     render_template,
     session,
     make_response,
-    render_template_string,
     Response,
 )
-from project.backend.helpers import auth_required, encode_token
+from project.backend.helpers import admin_required, auth_required, encode_token
 from project.backend.container import user_service
 
 user_ns = Namespace("user")
@@ -42,3 +41,22 @@ class UserPassword(Resource):
             response="Одно из полей указано неверно <a href='/user/password/'>попробовать еще раз</a>",
             status=400,
         )
+
+
+@user_ns.route("/management/")
+class UserManagement(Resource):
+    @admin_required
+    def get(self):
+        headers = {"Content-Type": "text/html"}
+        users = user_service.get_all()
+        return make_response(
+            render_template("user_management.html", users=users), 200, headers
+        )
+
+
+@user_ns.route("/delete/<username>")
+class UserManagement(Resource):
+    @admin_required
+    def get(self, username):
+        user_service.delete(username)
+        return "Пользователь успешно удален"
