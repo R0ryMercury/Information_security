@@ -49,7 +49,7 @@ app = create_app(Config())
 
 with app.app_context():
     db.create_all()
-    init_db()
+    # init_db()
 
 
 if __name__ == "__main__":
