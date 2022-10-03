@@ -1,11 +1,5 @@
 from flask_restx import Resource, Namespace
-from flask import (
-    request,
-    render_template,
-    session,
-    make_response,
-    Response,
-)
+from flask import request, render_template, session, make_response, Response, redirect
 from project.backend.helpers import admin_required, auth_required, encode_token
 from project.backend.container import user_service
 
@@ -59,4 +53,4 @@ class UserManagement(Resource):
     @admin_required
     def get(self, username):
         user_service.delete(username)
-        return "Пользователь успешно удален"
+        return redirect("/user/management/")
