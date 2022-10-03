@@ -9,7 +9,7 @@ def caeser_cipher(string: str, amount: int, is_shifred=False) -> str:
             shifted + shifted.upper(), ascii_lowercase + ascii_uppercase
         )
     else:
-        shifted: str = ascii_lowercase[amount:] + ascii_lowercase[:amount]
+        shifted: str = ascii_lowercase[amount % 26 :] + ascii_lowercase[: amount % 26]
         translation: dict[int, int | None] = str.maketrans(
             ascii_lowercase + ascii_uppercase, shifted + shifted.upper()
         )

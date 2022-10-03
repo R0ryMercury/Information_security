@@ -1,7 +1,8 @@
 from flask_restx import Namespace, Resource
-from flask import render_template, make_response, request, Response
+from flask import render_template, make_response, request, Response, flash, redirect
 from project.backend.ciphres.caeaser_ciphre import caeser_cipher
 from project.backend.helpers import auth_required
+from langdetect import detect
 
 ciphre_ns = Namespace("ciphre")
 
@@ -16,11 +17,17 @@ class CaeaserView(Resource):
     @auth_required
     def post(self):
         text = request.form.get("text")
+
         try:
+            if detect(text) not in ["en", "ca", "cy", "so"]:
+                return Response(
+                    response="В поле 'текст' могут быть только латинские символы <a href='/ciphre/caeaser/'>попробовать еще раз</a> {}",
+                    status=400,
+                )
             shift = int(request.form.get("shift"))
         except:
             return Response(
-                response="Вы ввели не число <a href='/ciphre/caeaser/'>попробовать еще раз</a>",
+                response="Вы ввели не число в поле 'сдвиг по алфавиту'<br>или не текст в поле 'текст' <a href='/ciphre/caeaser/'>попробовать еще раз</a>",
                 status=400,
             )
         return Response(

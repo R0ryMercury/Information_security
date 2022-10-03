@@ -1,4 +1,4 @@
-from flask import Flask, redirect
+from flask import Flask, redirect, send_from_directory
 from flask_restx import Api
 from project.backend.config import Config
 from project.backend.create_data import init_db
@@ -31,6 +31,12 @@ def create_app(config_object):
         return redirect("/main/")
 
     register_extensions(app)
+
+    @app.route("/uploads/<path:name>")
+    def download_file(name):
+        return send_from_directory(
+            app.config["UPLOAD_FOLDER"], name, as_attachment=True
+        )
 
     return app
 
