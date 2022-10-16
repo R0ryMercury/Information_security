@@ -8,6 +8,7 @@ from project.backend.constants import (
     JWT_SECRET,
     TOKEN_EXPIRE_DAYS,
     TOKEN_EXPIRE_MINUTES,
+    UPLOAD_FOLDER,
 )
 
 
@@ -76,6 +77,6 @@ def save_pic(pic) -> str:
     """Функция сохраняет переданную ей картинку
     и возвращает путь до нее"""
     filename = pic.filename
-    path = f"./uploads/images/{filename}"
+    path = UPLOAD_FOLDER + f"/{filename}"
     pic.save(path)
     return path

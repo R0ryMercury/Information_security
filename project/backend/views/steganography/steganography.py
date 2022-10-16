@@ -1,8 +1,8 @@
 from flask_restx import Resource, Namespace
-from flask import redirect, flash, request, render_template, make_response
+from flask import request, render_template, make_response, send_file
 from project.backend.ciphres.steganography import image_encode
 from project.backend.constants import ALLOWED_EXTENSIONS
-from project.backend.helpers import auth_required
+from project.backend.helpers import auth_required, save_pic
 
 stegano_ns = Namespace("steganography")
 
@@ -23,8 +23,8 @@ class EncodeView(Resource):
             return "Недопустимый формат картинки"
 
         try:
-            result = image_encode(picture, message)
+            path = save_pic(picture)
+            result = image_encode(path, message)
         except FileNotFoundError:
             return "Файл не найден"
-        headers = {"Content-Type": "text/html"}
-        return make_response(render_template("uploaded.html", pic=result), 200, headers)
+        return send_file(result, mimetype="image/gif")
