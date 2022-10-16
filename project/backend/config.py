@@ -18,5 +18,3 @@ class BaseConfig(object):
 class Config(BaseConfig):
     STRICT_SLASHES = False
     SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(BASEDIR, "users.db")
-    UPLOAD_FOLDER = "/project/frontend/static/uploads"
-    ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
