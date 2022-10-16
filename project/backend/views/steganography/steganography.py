@@ -18,16 +18,13 @@ class EncodeView(Resource):
         message = request.form.get("message")
 
         if not picture or not message:
-            flash("Отсутствует картинка или текст")
-            return redirect(request.url)
+            return "Отсутствует картинка или текст"
         if picture.filename.split(".")[-1] not in ALLOWED_EXTENSIONS:
-            flash("Недопустимый формат картинки")
-            return redirect(request.url)
+            return "Недопустимый формат картинки"
 
         try:
-            result = image_encode(picture.filename, message)
+            result = image_encode(picture, message)
         except FileNotFoundError:
-            flash("Файл не найден")
-            return redirect(request.url)
+            return "Файл не найден"
         headers = {"Content-Type": "text/html"}
         return make_response(render_template("uploaded.html", pic=result), 200, headers)

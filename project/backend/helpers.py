@@ -70,3 +70,12 @@ def admin_required(func):
         return func(*args, **kwargs)
 
     return wrapper
+
+
+def save_pic(pic) -> str:
+    """Функция сохраняет переданную ей картинку
+    и возвращает путь до нее"""
+    filename = pic.filename
+    path = f"./uploads/images/{filename}"
+    pic.save(path)
+    return path
