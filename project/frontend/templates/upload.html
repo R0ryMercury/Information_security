@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Добавить пост</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-<main>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Вшить текст в картинку</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Зашифровать текст с помощью картинки</h1>
 
-    <a href="/" class="link">Назад</a>
-
-    <h1>Добавить пост</h1>
-
-    <form action="/post/" method="POST" enctype="multipart/form-data">
-        <p>Картинка к посту</p>
+      <form
+        action="/steganography/encode/"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <p>Картинка, в которую надо вшить текст</p>
         <div>
-            <input type="file" name="picture">
+          <input type="file" name="picture" />
         </div>
-        <p>Текст к посту</p>
+        <p>Сообщение</p>
         <div>
-            <textarea name="content" rows="5" ></textarea>
+          <textarea name="message" rows="5"></textarea>
         </div>
 
         <div>
-            <input type="submit" value="Добавить" class="button">
+          <input type="submit" value="Зашифровать" class="button" />
         </div>
-    </form>
-
-
-</main>
-</body>
+      </form>
+    </main>
+  </body>
 </html>

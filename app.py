@@ -6,6 +6,7 @@ from project.backend.views.main.main import main_ns
 from project.backend.views.auth.user import user_ns
 from project.backend.views.auth.auth import auth_ns
 from project.backend.views.ciphre.ciphre import ciphre_ns
+from project.backend.views.steganography.steganography import stegano_ns
 from project.backend.setup_db import db
 from loguru import logger
 
@@ -49,6 +50,7 @@ def register_extensions(app):
     api.add_namespace(auth_ns)
     api.add_namespace(user_ns)
     api.add_namespace(ciphre_ns)
+    api.add_namespace(stegano_ns)
 
 
 app = create_app(Config())
