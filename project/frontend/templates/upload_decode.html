@@ -2,16 +2,26 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <title>Зашифрованная картинка</title>
+    <title>Расшифровать картинку</title>
     <link rel="stylesheet" href="/static/style.css" />
   </head>
   <body>
     <main>
-      <h1>Текст успешно зашифрован!</h1>
+      <h1>Расшифровать текст с помощью картинки</h1>
 
-      <div class="post">
-        <img src="{{ pic }}" width="100%" alt="" />
-      </div>
+      <form
+        action="/steganography/decode/"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <p>Картинка, в которой содержится сообщение</p>
+        <div>
+          <input type="file" name="picture" />
+        </div>
+        <div>
+          <input type="submit" value="Расшифровать" class="button" />
+        </div>
+      </form>
     </main>
   </body>
 </html>
