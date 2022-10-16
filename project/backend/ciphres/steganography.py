@@ -10,5 +10,5 @@ def image_encode(img_path, message: str) -> str:
     return shifred_img
 
 
-def image_decode(shifred_img):
-    return exifHeader.reveal(shifred_img).decode()
+def image_decode(path):
+    return exifHeader.reveal(path).decode()
