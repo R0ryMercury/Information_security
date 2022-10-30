@@ -18,7 +18,7 @@
 
 Пользователю предлагается пройти регистрацию или авторизоваться
 
-![main_page](https://github.com/R0ryMercury/information_security/blob/master/readme_files/main_page.png)
+![main_page](https://github.com/R0ryMercury/information_security/blob/master/readme_files/main.png)
 
 ## Страница регистрации
 
@@ -47,4 +47,14 @@
 
 ## Стеганография
 
-![stegano](https://github.com/R0ryMercury/information_security/blob/master/readme_files/img_ciphre.mp4)
+![stegano](https://github.com/R0ryMercury/information_security/blob/master/readme_files/img_ciphre.gif)
+
+## Шифр цезаря
+
+![caesar_ciphre](https://github.com/R0ryMercury/information_security/blob/master/readme_files/caesar_ciphre.gif)
+
+## Управление пользователями
+
+Позволяет удалить любого пользователя с ролью "user"
+
+![user_management](https://github.com/R0ryMercury/information_security/blob/master/readme_files/user_management.gif)
