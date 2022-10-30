@@ -47,7 +47,7 @@
 
 ## Стеганография
 
-![img_ciphre.gif](https://s4.gifyu.com/images/img_ciphre.gif)
+![stegano](https://github.com/R0ryMercury/information_security/blob/master/readme_files/img_ciphre.gif)
 
 ## Шифр цезаря
 
