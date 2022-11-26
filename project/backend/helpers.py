@@ -1,11 +1,14 @@
+import base64
 import calendar
 import datetime
-import bcrypt
+import hashlib
+import hmac
 import jwt
-from flask import request, abort, session
+from flask import abort, session
 from project.backend.constants import (
     JWT_ALGORITHM,
     JWT_SECRET,
+    SALT,
     TOKEN_EXPIRE_DAYS,
     TOKEN_EXPIRE_MINUTES,
     UPLOAD_FOLDER,
@@ -13,11 +16,14 @@ from project.backend.constants import (
 
 
 def get_hashed_password(password):
-    return bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+    return base64.b64encode(hashlib.pbkdf2_hmac("sha256", password.encode(), SALT, 1000))
 
 
 def check_password(password: str, hashed_password: str) -> bool:
-    return bcrypt.checkpw(password.encode(), hashed_password)
+    return hmac.compare_digest(
+        base64.b64decode(hashed_password),
+        hashlib.pbkdf2_hmac("sha256", password.encode(), SALT, 1000),
+    )
 
 
 def generate_tokens(data: dict) -> dict:
