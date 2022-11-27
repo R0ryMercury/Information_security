@@ -33,7 +33,7 @@ class EncodeView(Resource):
 
 
 @stegano_ns.route("/decode/")
-class EncodeView(Resource):
+class DecodeView(Resource):
     @auth_required
     def get(self):
         headers = {"Content-Type": "text/html"}
