@@ -53,4 +53,6 @@ class DecodeView(Resource):
             result = image_decode(path)
         except FileNotFoundError:
             return "Файл не найден"
+        except ValueError:
+            return "Оригинальная картинка была не в jpg, зашифруйте заново"
         return f"Результат расшифровки: {result}"
