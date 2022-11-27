@@ -17,4 +17,4 @@ class BaseConfig:
 
 class Config(BaseConfig):
     STRICT_SLASHES = False
-    SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(BASEDIR, "users.db")
+    SQLALCHEMY_DATABASE_URI = "postgresql://flask_app:flask_app_password@pg/users"
