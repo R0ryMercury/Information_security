@@ -4,6 +4,7 @@ services:
   api:
     build:
       context: .
+    image: rorymercury/information_security
     ports:
       - 80:80
     volumes:
