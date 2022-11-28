@@ -16,28 +16,28 @@ jobs:
       #   run: echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
       # - name: docker push
       #   run: docker push rorymercury/information_security:$GITHUB_REF_NAME-$GITHUB_RUN_ID
-      - name: Check secrets presence
-        id: checksecrets
-        shell: bash
+        - name: Check secrets presence
+          id: checksecrets
+          shell: bash
+          run: |
+            if [ "$DOCKER_USERNAME" == "" ]; then
+              echo ::set-output name=secretspresent::false
+            else
+              echo ::set-output name=secretspresent::true
+            fi
+          env:
+            DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME}}
+        - name: run step if multiline not null
+          if: ${{ steps.checksecrets.outputs.secretspresent }}
+          run: echo multiline not null
         run: |
-          if [ "$DOCKER_USERNAME" == "" ]; then
-            echo ::set-output name=secretspresent::false
-          else
-            echo ::set-output name=secretspresent::true
-          fi
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME}}
-      - name: run step if multiline not null
-        if: ${{ steps.checksecrets.outputs.secretspresent }}
-        run: echo multiline not null
-      run: |
-          if [ "$DOCKER_TOKEN" == "" ]; then
-            echo ::set-output name=secretspresent::false
-          else
-            echo ::set-output name=secretspresent::true
-          fi
-        env:
-          DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN}}
-      - name: run step if multiline not null
-        if: ${{ steps.checksecrets.outputs.secretspresent }}
-        run: echo multiline not null
+            if [ "$DOCKER_TOKEN" == "" ]; then
+              echo ::set-output name=secretspresent::false
+            else
+              echo ::set-output name=secretspresent::true
+            fi
+          env:
+            DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN}}
+        - name: run step if multiline not null
+          if: ${{ steps.checksecrets.outputs.secretspresent }}
+          run: echo multiline not null
