@@ -6,7 +6,7 @@ services:
     ports:
       - 80:80
     volumes:
-      - ./docker_config.py:/code/project/default_config.py
+      - ./docker_config-ci.py:/code/project/default_config.py
     depends_on:
       pg:
         condition: service_healthy
