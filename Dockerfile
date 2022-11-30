@@ -7,5 +7,4 @@ RUN pip install -r requirements.txt
 COPY app.py .
 COPY project project/
 COPY docker_config-ci.py project/config.py
-
 CMD flask run -h 0.0.0.0 -p 80
