@@ -1,8 +1,10 @@
+from string import ascii_letters
+
+from flask import Response, make_response, render_template, request
 from flask_restx import Namespace, Resource
-from flask import render_template, make_response, request, Response, flash, redirect
+
 from project.backend.ciphres.caeaser_ciphre import caeser_cipher
 from project.backend.helpers import auth_required
-from langdetect import detect
 
 ciphre_ns = Namespace("ciphre")
 
@@ -19,9 +21,9 @@ class CaeaserView(Resource):
         text = request.form.get("text")
 
         try:
-            if detect(text) not in ["en", "ca", "cy", "so"]:
+            if not set(text) <= set(ascii_letters + " "):
                 return Response(
-                    response="В поле 'текст' могут быть только латинские символы <a href='/ciphre/caeaser/'>попробовать еще раз</a> {}",
+                    response="В поле 'текст' могут быть только латинские символы <a href='/ciphre/caeaser/'>попробовать еще раз</a>",
                     status=400,
                 )
             shift = int(request.form.get("shift"))

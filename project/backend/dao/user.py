@@ -1,5 +1,6 @@
-from project.backend.dao.models.user import User
 from datetime import datetime
+
+from project.backend.dao.models.user import User
 
 
 class UserDao:

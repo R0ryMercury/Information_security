@@ -1,5 +1,6 @@
-from flask_restx import Resource, Namespace
-from flask import request, render_template, make_response, send_file
+from flask import make_response, render_template, request, send_file
+from flask_restx import Namespace, Resource
+
 from project.backend.ciphres.steganography import image_decode, image_encode
 from project.backend.constants import ALLOWED_EXTENSIONS
 from project.backend.helpers import auth_required, save_pic

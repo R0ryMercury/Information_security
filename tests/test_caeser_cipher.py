@@ -1,4 +1,5 @@
 import pytest
+
 from project.backend.ciphres.caeaser_ciphre import caeser_cipher
 
 test_input_encrypted = [

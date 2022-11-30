@@ -1,5 +1,6 @@
-from project.backend.setup_db import db
 from marshmallow import Schema, fields
+
+from project.backend.setup_db import db
 
 
 class User(db.Model):

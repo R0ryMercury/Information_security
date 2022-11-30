@@ -1,6 +1,8 @@
 from datetime import datetime
 from secrets import choice
+
 from faker import Faker
+
 from project.backend.dao.models.user import User
 from project.backend.helpers import get_hashed_password
 from project.backend.setup_db import db

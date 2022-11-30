@@ -3,16 +3,13 @@ import calendar
 import datetime
 import hashlib
 import hmac
+
 import jwt
 from flask import abort, session
-from project.backend.constants import (
-    JWT_ALGORITHM,
-    JWT_SECRET,
-    SALT,
-    TOKEN_EXPIRE_DAYS,
-    TOKEN_EXPIRE_MINUTES,
-    UPLOAD_FOLDER,
-)
+
+from project.backend.constants import (JWT_ALGORITHM, JWT_SECRET, SALT,
+                                       TOKEN_EXPIRE_DAYS, TOKEN_EXPIRE_MINUTES,
+                                       UPLOAD_FOLDER)
 
 
 def get_hashed_password(password):

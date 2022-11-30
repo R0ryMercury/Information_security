@@ -1,15 +1,16 @@
 from flask import Flask, redirect, send_from_directory
 from flask_restx import Api
+from loguru import logger
+
 from project.backend.config import Config
 from project.backend.constants import UPLOAD_FOLDER
 from project.backend.create_data import init_db
-from project.backend.views.main.main import main_ns
-from project.backend.views.auth.user import user_ns
-from project.backend.views.auth.auth import auth_ns
-from project.backend.views.ciphre.ciphre import ciphre_ns
-from project.backend.views.steganography.steganography import stegano_ns
 from project.backend.setup_db import db
-from loguru import logger
+from project.backend.views.auth.auth import auth_ns
+from project.backend.views.auth.user import user_ns
+from project.backend.views.ciphre.ciphre import ciphre_ns
+from project.backend.views.main.main import main_ns
+from project.backend.views.steganography.steganography import stegano_ns
 
 
 # функция создания основного объекта app

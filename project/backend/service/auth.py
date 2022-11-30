@@ -1,4 +1,5 @@
 from flask import abort
+
 from project.backend.dao.user import UserDao
 from project.backend.helpers import encode_token, generate_tokens
 

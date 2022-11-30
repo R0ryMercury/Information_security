@@ -1,5 +1,6 @@
-from stegano import exifHeader
 from faker import Faker
+from stegano import exifHeader
+
 from project.backend.constants import UPLOAD_FOLDER
 
 
