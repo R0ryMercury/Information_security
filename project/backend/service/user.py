@@ -1,11 +1,10 @@
-from operator import itesAmgetter
+from operator import itemgetter
 
 from flask import session
 
 from project.backend.dao.models.user import User
 from project.backend.dao.user import UserDao
-from project.backend.helpers import (check_password, encode_token,
-                                     get_hashed_password)
+from project.backend.helpers import check_password, encode_token, get_hashed_password
 
 
 class UserService:
