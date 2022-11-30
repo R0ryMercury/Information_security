@@ -3,3 +3,4 @@ __pycache__/
 draft.py
 **/*.log
 /drafts
+docker-compose.yaml
