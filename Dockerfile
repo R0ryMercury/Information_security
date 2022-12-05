@@ -1,5 +1,6 @@
 FROM python:3.10-slim
 
+RUN apt update && apt install ffmpeg libsm6 libxext6  -y
 LABEL "creator"="RoryMercury"
 
 RUN apt update -y
