@@ -1,6 +1,5 @@
 from flask import Flask, redirect, send_from_directory
 from flask_restx import Api
-from loguru import logger
 
 from project.backend.config import Config
 from project.backend.constants import UPLOAD_FOLDER
@@ -15,13 +14,6 @@ from project.backend.views.steganography.steganography import stegano_ns
 
 # функция создания основного объекта app
 def create_app(config_object):
-    logger.add(
-        "project/debug.log",
-        format="{time} {level} {message}",
-        level="DEBUG",
-        rotation="10 KB",
-        compression="zip",
-    )
     app = Flask(
         __name__,
         template_folder="project/frontend/templates",
