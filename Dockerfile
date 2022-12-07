@@ -1,17 +1,14 @@
 FROM python:3.10-slim
-
-RUN apt update && apt install ffmpeg libsm6 libxext6  -y
 LABEL "creator"="RoryMercury"
 
-RUN apt update -y
 WORKDIR /code
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY app.py .
 COPY project project/
 COPY tests tests/
 COPY src src/
-COPY docker_config-ci.py project/config.py
 
 RUN pytest -s -v tests/*
-CMD flask run -h 0.0.0.0 -p 80
+CMD flask run -h 0.0.0.0 -p 5000

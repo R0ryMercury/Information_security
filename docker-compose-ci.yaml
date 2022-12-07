@@ -4,22 +4,4 @@ services:
   api:
     image: rorymercury/information_security:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     ports:
-      - 80:80
-    volumes:
-      - ./docker_config-ci.py:/code/project/default_config.py
-    depends_on:
-      pg:
-        condition: service_healthy
-  pg:
-    image: postgres:latest
-    environment:
-      POSTGRES_USER: $DB_USER
-      POSTGRES_PASSWORD: $DB_PASSWORD
-      POSTGRESS_DB: $DB_NAME
-    volumes:
-      - ./pg_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready", "-U", "user"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+      - 5000:5000
